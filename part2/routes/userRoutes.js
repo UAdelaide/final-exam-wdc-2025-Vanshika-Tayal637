@@ -56,3 +56,27 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
+
+// POST login (with session)
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const [rows] = await db.query(`
+      SELECT user_id, username, role FROM Users
+      WHERE email = ? AND password_hash = ?
+    `, [email, password]);
+
+    if (rows.length === 0) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    // Store the user in the session
+    req.session.user = rows[0];
+
+    // Respond with role for redirect logic on frontend
+    res.json({ message: 'Login successful', role: rows[0].role });
+  } catch (error) {
+    res.status(500).json({ error: 'Login failed', details: error.message });
+  }
+});
