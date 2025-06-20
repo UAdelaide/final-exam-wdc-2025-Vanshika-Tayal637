@@ -55,7 +55,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-module.exports = router;
 
 // POST login (with session)
 router.post('/login', async (req, res) => {
@@ -80,3 +79,5 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ error: 'Login failed', details: error.message });
   }
 });
+
+module.exports = router;
