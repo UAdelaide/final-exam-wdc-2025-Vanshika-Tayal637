@@ -1,0 +1,4 @@
+{
+    path: '/login',
+    component: LoginPage
+  }
