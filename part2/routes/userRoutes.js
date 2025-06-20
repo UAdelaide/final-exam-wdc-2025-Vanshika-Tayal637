@@ -35,7 +35,7 @@ router.get('/me', (req, res) => {
   res.json(req.session.user);
 });
 
-// POST login 
+// POST login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -59,6 +59,7 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) return res.status(500).json({ error: 'Logout failed' });
+    res.clearCookie('connect.sid');
     res.json({ message: 'Logged out' });
   });
 });
