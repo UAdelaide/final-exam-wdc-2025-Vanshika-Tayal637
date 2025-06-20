@@ -8,6 +8,14 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 
+
+// ✅ Add session support
+app.use(session({
+    secret: 'dogwalksecret', // Use env var for production
+    resave: false,
+    saveUninitialized: true
+  }));
+
 // Routes
 const walkRoutes = require('./routes/walkRoutes');
 const userRoutes = require('./routes/userRoutes');
