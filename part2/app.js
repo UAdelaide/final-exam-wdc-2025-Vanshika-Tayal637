@@ -16,12 +16,5 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/api/walks', walkRoutes);
 app.use('/api/users', userRoutes);
 
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
-
-createApp(App).use(router).mount('#app');
-
-
 // Export the app instead of listening here
 module.exports = app;
