@@ -25,7 +25,7 @@
             <label class="form-label">Select Your Dog</label> <!-- Created Dog names dropdown list -->
 <select v-model="form.dog_id" class="form-select" required>
   <option disabled value="">-- Choose a dog --</option>
-  <option v-for="dog in theDogs" :value="dog.dog_id">
+  <option v-for="dog in Dogs" :value="dog.dog_id">
     {{ dog.name }}
   </option>
 </select>
