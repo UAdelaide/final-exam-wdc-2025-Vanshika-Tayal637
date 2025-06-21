@@ -143,6 +143,14 @@
             message.value = '';
           }
         }
+        function AloadDogs() {
+  fetch('/api/users/dogs/mine')
+    .then(res => res.json())
+    .then(data => {
+      theDogs.value = data; // Updates theDogs list with the names of the dogs the owner has.
+    });
+}
+
 
         async function logout() {
           await fetch('/api/users/logout', { method: 'POST' });
