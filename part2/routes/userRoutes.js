@@ -84,23 +84,4 @@ router.post('/logout', (req, res) => {
 });
 
 
-router.get('/dogs/mine', (req, res) => {
-  if (!req.session.user || req.session.user.role !== 'owner') {//Check if the user is the owner
-     return res.status(401).json({ error: 'Unauthorised' });
-     }
-
-
- const ownersId = req.session.user.user_id;
-
-
- db.query(
-  'SELECT dog_id, name FROM Dogs WHERE owner_id = ?',  //Gets all the dog names of the dogs the owner has ans sends a json response
-  [ownersId]
- )
- .then(([rows]) => {
-    res.json(rows);
-  });
-
-
-});
 module.exports = router;
