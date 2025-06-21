@@ -25,7 +25,7 @@
             <label class="form-label">Select Your Dog</label> <!-- Created Dog names dropdown list -->
 <select v-model="form.dog_id" class="form-select" required>
   <option disabled value="">-- Choose a dog --</option>
-  <option v-for="dog in Dogs" :value="dog.dog_id">
+  <option v-for="dog in ADogs" :value="dog.dog_id">
     {{ dog.name }}
   </option>
 </select>
@@ -94,7 +94,7 @@
         });
 
         const walks = ref([]);
-        // const Adogs = ref([]);
+        const Adogs = ref([]);
         const message = ref('');
         const error = ref('');
 
