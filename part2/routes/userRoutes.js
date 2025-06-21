@@ -83,5 +83,26 @@ router.post('/logout', (req, res) => {
   });
 });
 
+router.get('/dogs/mine', (req, res) => {
+  // Check if the user is the owner
+  if (!req.session.user || req.session.user.role !== 'owner') {
+    return res.status(401).json({ error: 'Unauthorised' });
+  }
+
+  const ownersId = req.session.user.user_id;
+
+  // Gets all the dog names of the dogs the owner has and sends a JSON response
+  db.query(
+    'SELECT dog_id, name FROM Dogs WHERE owner_id = ?',
+    [ownersId]
+  )
+  .then(([rows]) => {
+    res.json(rows);
+  })
+  .catch((err) => {
+    console.error('Database error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  });
+});
 
 module.exports = router;
