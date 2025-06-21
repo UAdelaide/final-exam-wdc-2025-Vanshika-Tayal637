@@ -94,10 +94,10 @@ router.get('/dogs/mine', (req, res) => {
 
 
  db.query(
-  'SELECT dog_id, name FROM Dogs WHERE owner_id = ?',//Gets all the dog names of the dogs the owner has ans sends a json response
+  'SELECT dog_id, name FROM Dogs WHERE owner_id = ?',  //Gets all the dog names of the dogs the owner has ans sends a json response
   [ownersId]
-  )
-  .then(([rows]) => {
+ )
+ .then(([rows]) => {
     res.json(rows);
   });
 
