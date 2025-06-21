@@ -143,11 +143,11 @@
             message.value = '';
           }
         }
-        function AloadDogs() {
+        function loadDogs() {
   fetch('/api/users/dogs/mine')
     .then(res => res.json())
     .then(data => {
-      Adogs.value = data; // Updates theDogs list with the names of the dogs the owner has.
+      Adogs.value = data; // Updates ADogs list with the names of the dogs the owner has.
     });
 }
 
