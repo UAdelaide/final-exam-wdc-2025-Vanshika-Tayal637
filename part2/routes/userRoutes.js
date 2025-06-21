@@ -83,7 +83,7 @@ router.post('/logout', (req, res) => {
   });
 });
 
-userRoutes.js
+
 router.get('/dogs/mine', (req, res) => {
   if (!req.session.user || req.session.user.role !== 'owner') {//Check if the user is the owner
      return res.status(401).json({ error: 'Unauthorised' });
