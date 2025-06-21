@@ -98,6 +98,17 @@
           }
         }
 
+        async function loadDogs() {
+          try {
+            const res = await fetch('/api/users/my-dogs');
+            if (res.ok) {
+              dogs.value = await res.json();
+            }
+          } catch (err) {
+            console.error(err);
+          }
+        }
+
         async function submitWalkRequest() {
           try {
             const res = await fetch('/api/walks', {
