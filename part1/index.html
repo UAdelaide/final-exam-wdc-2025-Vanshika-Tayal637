@@ -37,8 +37,7 @@
       <p class="small-text">Click here to see the mystery dog (even though it's right below):</p>
       <button @click="showDog = !showDog">Surprise Dog</button>
       <div v-if="showDog">
-        <!-- Missing alt text violates accessibility -->
-        <img :src="dogImage" width="500">
+        <img :src="dogImage" width="500" alt="Random dog">
         <p style="color: white;">This is <span style="font-weight: bold;">DOGGO</span>, a loyal best friend!</p>
         <!-- No labels or ARIA tags -->
         <input type="text" placeholder="Type your thoughts about this dog...">
