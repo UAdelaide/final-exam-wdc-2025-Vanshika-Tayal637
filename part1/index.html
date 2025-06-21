@@ -75,7 +75,18 @@
           dogs: []
         };
       },
-      
+      methods: {
+        async loadDogs() {
+          const res = await fetch('/api/dogs');
+          const data = await res.json();
+          for (let dog of data) {
+            const imgRes = await fetch('https://dog.ceo/api/breeds/image/random');
+            const imgData = await imgRes.json();
+            dog.photo = imgData.message;
+          }
+          this.dogs = data;
+        }
+      },
       mounted() {
         fetch('https://dog.ceo/api/breeds/image/random')
           .then(res => res.json())
