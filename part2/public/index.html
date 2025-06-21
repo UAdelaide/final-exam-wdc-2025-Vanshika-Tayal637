@@ -61,26 +61,7 @@
           } catch (err) {
             this.error = err.message;
           }
-        },
-        async loadDogs() {
-          try {
-            const res = await fetch('/api/dogs');
-            const data = await res.json();
-            await Promise.all(
-              data.map(async dog => {
-                try {
-                  const imgRes = await fetch('https://dog.ceo/api/breeds/image/random');
-                  const imgData = await imgRes.json();
-                  dog.photo = imgData.message;
-                } catch (e) {
-                  dog.photo = 'images/logo.png';
-                }
-              })
-            );
-            this.dogs = data;
-          } catch (err) {
-            console.error('Failed to load dogs', err);
-          }
+        
         }
       },
       mounted() {
